@@ -7,11 +7,14 @@ import NewBlogPost from "./views/new/New";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
+  const [query, setQuery] = useState('')
+  const [result, setResult] = useState()
+
   return (
     <Router>
-      <NavBar />
+      <NavBar query={query} setQuery={setQuery} setResult={setResult} />
       <Routes>
-        <Route path="/" exact element={<Home />} />
+        <Route path="/" exact element={<Home query={query} setQuery={setQuery} setResult={setResult} />} />
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/new" element={<NewBlogPost />} />
       </Routes>
